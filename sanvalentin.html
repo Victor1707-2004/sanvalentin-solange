@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Para Solange 💘</title>
+
+  <style>
+    :root{
+      --bg1:#140018;
+      --bg2:#2a0034;
+      --card:#ffffff12;
+      --border:#ffffff25;
+      --txt:#fff;
+      --muted:#ffffffc9;
+
+      --pink:#ff8fb1;
+      --rose:#ffd6e8;
+
+      --shadow: 0 18px 45px rgba(0,0,0,.45);
+    }
+
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      min-height:100vh;
+      display:grid;
+      place-items:center;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color:var(--txt);
+      background:
+        radial-gradient(900px 600px at 20% 15%, #ff8fb130, transparent 55%),
+        radial-gradient(900px 600px at 80% 85%, #c77dff30, transparent 55%),
+        linear-gradient(160deg, var(--bg1), var(--bg2));
+      overflow:hidden;
+    }
+
+    .card{
+      width:min(560px, 92vw);
+      padding:28px 22px;
+      border:1px solid var(--border);
+      background: linear-gradient(180deg, #ffffff14, #ffffff08);
+      backdrop-filter: blur(10px);
+      border-radius:24px;
+      box-shadow: var(--shadow);
+      text-align:center;
+    }
+
+    h1{
+      margin:0 0 10px;
+      font-size: clamp(26px, 3.2vw, 36px);
+      line-height:1.1;
+    }
+    p{ margin:0 0 18px; color:var(--muted); font-size: 15.5px; }
+
+    .buttons{
+      margin-top:18px;
+      display:flex;
+      gap:12px;
+      justify-content:center;
+      flex-wrap:wrap;
+      position:relative;
+      padding:64px 0 10px;
+      min-height:140px;
+    }
+
+    button{
+      border:0;
+      padding:12px 18px;
+      font-weight:800;
+      border-radius:14px;
+      cursor:pointer;
+      transition: transform .08s ease;
+      font-size:15px;
+    }
+    button:active{ transform: scale(.98); }
+
+    #yesBtn{
+      background: linear-gradient(135deg, var(--pink), var(--rose));
+      color:#1a0010;
+      box-shadow: 0 12px 30px rgba(255,143,177,.25);
+    }
+
+    #noBtn{
+      position:absolute;
+      left:50%;
+      top:16px;
+      transform: translateX(-50%);
+      background: #ffffff18;
+      color:#fff;
+      border:1px solid var(--border);
+      user-select:none;
+    }
+
+    .hint{
+      margin-top:10px;
+      color:#ffffffa8;
+      font-size:12.5px;
+    }
+
+    /* ===== Overlay final ===== */
+    .overlay{
+      position:fixed; inset:0;
+      display:none;
+      place-items:center;
+      padding:18px;
+      background:
+        radial-gradient(900px 600px at 50% 25%, #ff8fb12b, transparent 58%),
+        radial-gradient(900px 600px at 50% 80%, #c77dff22, transparent 60%),
+        linear-gradient(160deg, #0d0011, #25002f);
+      z-index:50;
+    }
+    .overlay.show{ display:grid; }
+
+    .final{
+      width:min(760px, 94vw);
+      padding:22px 18px 18px;
+      border-radius:26px;
+      text-align:center;
+      border:1px solid #ffffff22;
+      background:#ffffff10;
+      backdrop-filter: blur(10px);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+
+    .bouquet-wrap{
+      margin:6px auto 10px;
+      width:min(560px, 92vw);
+      display:grid;
+      place-items:center;
+    }
+
+    svg#bouquet{
+      width:min(520px, 92vw);
+      height:auto;
+      filter: drop-shadow(0 18px 30px rgba(0,0,0,.35));
+    }
+
+    .title-top{
+      margin:8px 0 0;
+      font-size: clamp(18px, 2.6vw, 24px);
+      color:#ffffffde;
+      font-weight:700;
+    }
+
+    .love-text{
+      margin:10px 0 2px;
+      font-size: clamp(28px, 4.4vw, 48px);
+      color:#ffd6e8;
+      font-weight:900;
+      letter-spacing:.2px;
+      text-shadow: 0 10px 25px rgba(0,0,0,.35);
+      animation: pulse 1.8s ease-in-out infinite;
+    }
+
+    .date{
+      margin:0;
+      font-size: clamp(14px, 2.2vw, 18px);
+      color:#ffffffc9;
+    }
+
+    @keyframes pulse{
+      0%,100%{ transform: scale(1); }
+      50%{ transform: scale(1.05); }
+    }
+
+    /* ===== Animación del ramo ===== */
+    .draw{
+      fill:none;
+      stroke-linecap:round;
+      stroke-linejoin:round;
+      stroke-dasharray: 1400;
+      stroke-dashoffset: 1400;
+      animation: drawLine 1.2s ease forwards;
+    }
+    @keyframes drawLine{ to{ stroke-dashoffset: 0; } }
+
+    .bloom{
+      transform-origin:center;
+      transform: scale(.25);
+      opacity: 0;
+      animation: bloom .9s cubic-bezier(.2,.9,.2,1) forwards;
+    }
+    @keyframes bloom{
+      60%{ transform: scale(1.08); opacity:1; }
+      100%{ transform: scale(1); opacity:1; }
+    }
+
+    /* delays */
+    .delay1{ animation-delay:.15s; }
+    .delay2{ animation-delay:.30s; }
+    .delay3{ animation-delay:.45s; }
+    .b2{ animation-delay:.90s; }
+    .b3{ animation-delay:1.10s; }
+    .b4{ animation-delay:1.35s; }
+    .b5{ animation-delay:1.55s; }
+  </style>
+</head>
+
+<body>
+
+  <div class="card">
+    <h1>Solange… ¿Quieres ser mi San Valentín? 💘</h1>
+    <p>Prometo cuidarte, hacerte reír y amarte bonito 💋</p>
+
+    <div class="buttons" id="arena">
+      <button id="yesBtn">Sí acepto ❣️</button>
+      <button id="noBtn" aria-hidden="true" tabindex="-1">No 🙃</button>
+    </div>
+
+    <div class="hint">Tip: intenta presionar “No” 😼</div>
+  </div>
+
+  <div class="overlay" id="overlay">
+    <div class="final">
+
+      <div class="bouquet-wrap">
+        <svg id="bouquet" viewBox="0 0 800 700" role="img" aria-label="Ramo de tulipanes">
+
+          <!-- 1) Flores -->
+          <g class="bloom b3">
+            <g transform="translate(0,-10)">
+              <circle cx="420" cy="150" r="92" fill="#FFD84A"/>
+              <circle cx="385" cy="175" r="92" fill="#FFECA0" opacity="0.95"/>
+              <ellipse cx="420" cy="160" rx="55" ry="75" fill="#FFCC2E" opacity="0.55"/>
+              <path d="M360 220 C395 205 445 205 480 220 C445 255 395 255 360 220Z" fill="#FFF6C8" opacity="0.7"/>
+            </g>
+            <g transform="translate(165,40)">
+              <circle cx="420" cy="150" r="92" fill="#FFD84A"/>
+              <ellipse cx="420" cy="160" rx="55" ry="75" fill="#FFCC2E" opacity="0.55"/>
+              <path d="M360 220 C395 205 445 205 480 220 C445 255 395 255 360 220Z" fill="#FFF6C8" opacity="0.7"/>
+            </g>
+            <g transform="translate(-170,95)">
+              <circle cx="420" cy="150" r="92" fill="#FFD84A"/>
+              <ellipse cx="420" cy="160" rx="55" ry="75" fill="#FFCC2E" opacity="0.55"/>
+              <path d="M360 220 C395 205 445 205 480 220 C445 255 395 255 360 220Z" fill="#FFF6C8" opacity="0.7"/>
+            </g>
+            <g transform="translate(170,155)">
+              <circle cx="420" cy="150" r="92" fill="#FFD84A"/>
+              <ellipse cx="420" cy="160" rx="55" ry="75" fill="#FFCC2E" opacity="0.55"/>
+              <path d="M360 220 C395 205 445 205 480 220 C445 255 395 255 360 220Z" fill="#FFF6C8" opacity="0.7"/>
+            </g>
+            <g transform="translate(-175,170)">
+              <circle cx="420" cy="150" r="92" fill="#FFD84A"/>
+              <ellipse cx="420" cy="160" rx="55" ry="75" fill="#FFCC2E" opacity="0.55"/>
+              <path d="M360 220 C395 205 445 205 480 220 C445 255 395 255 360 220Z" fill="#FFF6C8" opacity="0.7"/>
+            </g>
+          </g>
+
+          <!-- 2) Tallos y hojas -->
+          <g>
+            <path class="draw delay1" d="M370 500 C350 430 330 360 290 285" stroke="#1FB386" stroke-width="14"/>
+            <path class="draw delay2" d="M400 520 C400 445 400 380 395 260" stroke="#1FB386" stroke-width="14"/>
+            <path class="draw delay2" d="M430 520 C450 445 475 380 510 300" stroke="#1FB386" stroke-width="14"/>
+            <path class="draw delay3" d="M360 520 C340 455 320 410 260 350" stroke="#1FB386" stroke-width="14"/>
+            <path class="draw delay3" d="M440 520 C470 455 500 410 560 360" stroke="#1FB386" stroke-width="14"/>
+          </g>
+
+          <g class="bloom b2">
+            <path d="M310 430 C250 430 210 395 205 350 C255 360 295 392 310 430Z" fill="#18A97D"/>
+            <path d="M490 430 C550 430 590 395 595 350 C545 360 505 392 490 430Z" fill="#18A97D"/>
+          </g>
+
+          <!-- 3) Papel CORREGIDO: subido + cuello frontal (envuelve el ramo) -->
+          <g class="bloom b4">
+            <!-- papel frontal principal (SUBIDO) -->
+            <path d="M210 545
+                     C250 485 295 445 340 415
+                     C370 395 430 395 460 415
+                     C505 445 550 485 590 545
+                     C525 610 465 640 400 645
+                     C335 640 275 610 210 545Z"
+                  fill="#F1D9C8"/>
+
+            <!-- cuello del bouquet (tapa la base de los tallos) -->
+            <path d="M300 430
+                     C340 395 365 380 400 380
+                     C435 380 460 395 500 430
+                     L500 455
+                     C460 430 435 415 400 415
+                     C365 415 340 430 300 455Z"
+                  fill="#E7C7B2"/>
+
+            <!-- solapa interna -->
+            <path d="M400 645
+                     C345 632 300 610 265 580
+                     C322 555 355 525 378 495
+                     C392 475 400 463 400 463
+                     C400 463 408 475 422 495
+                     C445 525 478 555 535 580
+                     C500 610 455 632 400 645Z"
+                  fill="#E7C7B2" opacity="0.98"/>
+
+            <!-- sombras -->
+            <path d="M400 463 C372 520 345 555 300 585" fill="none" stroke="#DDB49B" stroke-width="10" opacity="0.35"/>
+            <path d="M400 463 C428 520 455 555 500 585" fill="none" stroke="#DDB49B" stroke-width="10" opacity="0.35"/>
+          </g>
+
+          <!-- 4) Moño al frente -->
+          <g class="bloom b5">
+            <path d="M330 560 C360 530 440 530 470 560 C440 592 360 592 330 560Z" fill="#D7A08C"/>
+            <path d="M355 560 C310 590 290 625 300 655 C335 645 360 620 380 590Z" fill="#C58B77"/>
+            <path d="M445 560 C490 590 510 625 500 655 C465 645 440 620 420 590Z" fill="#C58B77"/>
+            <circle cx="400" cy="560" r="14" fill="#B67663"/>
+          </g>
+
+        </svg>
+      </div>
+
+      <div class="title-top">Ya lo sabía mi amor ❣️🫨</div>
+      <div class="love-text">Te amoo mi amorrr 💖</div>
+      <p class="date">Tenemos una cita el 14❣️</p>
+
+    </div>
+  </div>
+
+  <script>
+    const arena = document.getElementById("arena");
+    const noBtn  = document.getElementById("noBtn");
+    const yesBtn = document.getElementById("yesBtn");
+    const overlay = document.getElementById("overlay");
+
+    function moveNo(){
+      const rect = arena.getBoundingClientRect();
+      const btnRect = noBtn.getBoundingClientRect();
+      const maxX = Math.max(0, rect.width - btnRect.width);
+      const maxY = Math.max(0, rect.height - btnRect.height);
+
+      const x = Math.random() * maxX;
+      const y = Math.random() * maxY;
+
+      noBtn.style.left = x + "px";
+      noBtn.style.top  = y + "px";
+      noBtn.style.transform = "none";
+    }
+
+    noBtn.addEventListener("focus", (e)=> e.target.blur());
+    noBtn.addEventListener("mouseenter", moveNo);
+    noBtn.addEventListener("touchstart", (e)=>{ e.preventDefault(); moveNo(); }, {passive:false});
+    noBtn.addEventListener("click", (e)=>{ e.preventDefault(); moveNo(); });
+    moveNo();
+
+    yesBtn.addEventListener("click", ()=>{
+      overlay.classList.add("show");
+    });
+
+    overlay.addEventListener("click", (e)=>{
+      if(e.target === overlay) overlay.classList.remove("show");
+    });
+  </script>
+</body>
+</html>
